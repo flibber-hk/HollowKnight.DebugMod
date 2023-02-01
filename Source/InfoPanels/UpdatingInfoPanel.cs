@@ -17,7 +17,7 @@ namespace DebugMod.InfoPanels
         public void AddLine(string line)
         {
             _lines.Enqueue(line);
-            while (_lines.Count > 35)
+            while (_lines.Count > 36)
             {
                 _lines.Dequeue();
             }
