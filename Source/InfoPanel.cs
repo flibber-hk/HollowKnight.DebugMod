@@ -136,6 +136,19 @@ namespace DebugMod
         }
 
         /// <summary>
+        /// Create a new Updating Info Panel with the given name.
+        /// </summary>
+        /// <param name="Name">The name of the panel - this will not be displayed.</param>
+        /// <returns>A function that can be used to add a line to the panel ticker.</returns>
+        [PublicAPI]
+        public static Action<string> CreateUpdatingInfoPanel(string Name)
+        {
+            UpdatingInfoPanel panel = new(Name);
+            AddInfoPanel(Name, panel);
+            return panel.AddLine;
+        }
+
+        /// <summary>
         /// Add an info panel to the rotation. Must be done during mod initialization.
         /// </summary>
         /// <param name="Name">The name of the panel.</param>

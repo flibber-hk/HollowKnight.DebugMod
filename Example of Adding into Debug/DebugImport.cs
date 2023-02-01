@@ -21,6 +21,7 @@ namespace DebugAddition
             public static Action<Action> RemoveFromOnGiveAllCharm = null;
             public static Action<Action> AddToOnRemoveAllCharm = null;
             public static Action<Action> RemoveFromOnRemoveAllCharm = null;
+			public static Func<string, Action<string>> CreateUpdatingInfoPanel = null;
         }
         static DebugMod()
         {
@@ -55,6 +56,9 @@ namespace DebugAddition
 
         public static void AddInfoToSimplePanel(string Name, string label, Func<string> textFunc)
             => DebugImport.AddInfoToSimplePanel?.Invoke(Name, label, textFunc);
+			
+		public static Action<string> CreateUpdatingInfoPanel(string Name)
+            => DebugImport.CreateUpdatingInfoPanel?.Invoke(Name) ?? (s => { });
 
         public static void SetLockKeyBinds(bool value)
             => DebugImport.SetLockKeyBinds?.Invoke(value);
